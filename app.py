@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-# Page config for a clean, professional look
 st.set_page_config(page_title="Performance Attribution", layout="wide")
 
 st.title("📊 Performance Attribution Dashboard")
@@ -72,7 +71,6 @@ if ready:
     master = master.merge(asset_rets.rename('Return'), on='Asset ID', how='left')
     master.fillna(0, inplace=True)
 
-    # Group by the sector/attribute
     grouped = master.groupby(attr_type).apply(lambda x: pd.Series({
         'w_p': x['w_p'].sum(),
         'w_b': x['w_b'].sum(),
